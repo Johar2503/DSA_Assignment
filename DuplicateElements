@@ -1,0 +1,42 @@
+package com.demo;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+
+
+public class Duplicates {
+
+	public static void main(String[] args) {
+		int a[]= {4, 3, 2, 7, 8, 2, 3, 1};
+		System.out.println(findDuplicate(a));
+	}
+	
+	public static List<Integer> findDuplicate(int[] ar){
+		int n=ar.length;
+		List<Integer> list=new ArrayList<Integer>();
+
+		Map<Integer, Integer> m=new HashMap<Integer, Integer>();
+		
+		
+		for(int i:ar) {
+			if(m.containsKey(i)) {
+				int v=m.getOrDefault(i, 0)+1;
+				m.put(i, v);
+			}
+			else {
+				m.put(i, 0);
+			}
+	
+			}
+		for(Integer e:m.keySet()) {
+			if(m.get(e)>=1) {
+				list.add(e);
+			}
+		}
+		return list;
+		
+	}
+}
